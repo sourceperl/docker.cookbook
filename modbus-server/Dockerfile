@@ -2,7 +2,6 @@ FROM python:3.9-slim
 
 # main app in /usr/src/app
 WORKDIR /usr/src/app
-COPY app.py ./
 
 # add python app requirements
 COPY requirements.txt ./
@@ -21,4 +20,5 @@ ENV PYTHONUNBUFFERED=1
 EXPOSE 5020
 
 # run app
+COPY app.py ./
 CMD [ "python", "./app.py" ]
