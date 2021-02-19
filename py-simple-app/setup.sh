@@ -1,5 +1,10 @@
 #!/bin/bash
 
-#docker rm -f py-simple-app
-docker build -t py-simple-app-img .
-docker run --name py-simple-app --restart no py-simple-app-img
+CONTAINER="py-simple-app"
+IMAGE="${CONTAINER}-img"
+
+# docker rm -f ${CONTAINER}
+docker build -t ${IMAGE} .
+docker run --rm -it --name ${CONTAINER} \
+           --restart no \
+           ${IMAGE}
