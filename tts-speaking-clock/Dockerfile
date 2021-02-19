@@ -6,7 +6,7 @@ RUN dpkg-reconfigure -f noninteractive tzdata
 
 # packages install
 # add non-free archive area (need for mbrola packages)
-# install alsa-utils (aplay tool), python3/pip3, espeak and mbrola packages
+# install pulseaudio, alsa-utils (aplay tool), python3/pip3, espeak and mbrola packages
 RUN sed -i -e's/ main/ main contrib non-free/g' /etc/apt/sources.list \
     && apt-get update \
     --quiet \
