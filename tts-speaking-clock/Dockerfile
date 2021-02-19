@@ -30,11 +30,11 @@ WORKDIR /usr/src/app
 COPY requirements.txt ./
 RUN pip3 install -r requirements.txt
 
-# unable to avoid to run python app as root
-# ARG username=py-app
-# RUN groupadd -r $username && \
-#     useradd --no-log-init -r -g $username $username
-# USER $username
+# avoid to run python app as root
+ARG USERNAME=py-app
+RUN groupadd -r $USERNAME && \
+    useradd -g $USERNAME $USERNAME && \
+    gpasswd -a $USERNAME audio
 
 # setup environnement 
 ENV PYTHONUNBUFFERED=1
