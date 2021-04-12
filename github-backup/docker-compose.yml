@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  github-backup:
+    build: .
+    image: github-backup-img
+    container_name: github-backup
+    restart: unless-stopped
+    volumes:
+      - github-backup-data-vol:/data
+    env_file:
+      - env.private
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+volumes:
+  github-backup-data-vol:
+    external:
+      name: github-backup-data-vol
