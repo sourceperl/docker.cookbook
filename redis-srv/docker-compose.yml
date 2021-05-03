@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  redis-srv:
+    image: redis
+    container_name: redis-srv
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data-vol:/data
+    networks:
+      - redis-net
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+volumes:
+  redis-data-vol:
+    external: true
+
+networks:
+  redis-net:
+    external: true
+
