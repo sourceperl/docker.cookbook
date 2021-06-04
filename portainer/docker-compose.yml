@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  portainer:
+    image: portainer/portainer-ce
+    container_name: portainer
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer-data-vol:/data
+    networks:
+      - portainer-net
+    ports:
+      - 0.0.0.0:9000:9000
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+volumes:
+  portainer-data-vol:
+    name: portainer-data-vol
+
+networks:
+  portainer-net:
+    name: portainer-net
+    driver: bridge
