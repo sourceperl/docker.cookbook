@@ -1,0 +1,16 @@
+connect to influxdb in container :
+$ docker exec -it influxdb-srv influx
+
+remove all :
+DROP SERIES FROM tag_historian
+
+remove a specific tag :
+DROP SERIES FROM tag_historian WHERE "tag"='TAG_NAME'
+
+remove tag series older than 3 days:
+use mydb
+DELETE FROM tag_historian WHERE time < now() - 3d
+
+remove all time series before 2020:
+use mydb
+DELETE WHERE time < '2020-01-01'

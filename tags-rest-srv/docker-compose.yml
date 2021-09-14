@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  tags-rest-srv:
+    build: .
+    image: tags-rest-srv
+    container_name: tags-rest-srv
+    restart: always
+    ports:
+      - "127.0.0.1:5000:5000"
+
+networks:
+  default:
+    external:
+       name: influxdb-net
