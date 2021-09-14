@@ -26,10 +26,9 @@ sudo reboot
 We can install portainer (a web container management tool) on docker:
 
 ```bash
-docker run -d -p 0.0.0.0:8000:8000 -p 0.0.0.0:9000:9000 --name=portainer \
-           --restart=always \
+docker run -d -p 0.0.0.0:9000:9000 --name=portainer --restart=always \
            -v /var/run/docker.sock:/var/run/docker.sock \
-           -v portainer_data:/data portainer/portainer-ce
+           -v portainer-data-vol:/data portainer/portainer-ce
 ```
 
 Now you can connect to portainer tool at http://localhost:9000/
