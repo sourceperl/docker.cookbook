@@ -2,9 +2,9 @@
 
 CONTAINER="grafana-srv"
 IMAGE="grafana/grafana:latest"
-#NETWORK="influxdb-net"
+NETWORK="influxdb-net"
 DATA_VOLUME="grafana-data-vol"
-PUB_PORT="-p 3000:3000"
+PUB_PORT="-p 0.0.0.0:3000:3000"
 
 
 [[ $NETWORK ]] && docker network create ${NETWORK}
@@ -23,3 +23,4 @@ docker create --name ${CONTAINER} \
 docker start ${CONTAINER}
 
 echo "login to http://localhost:3000/ with admin/admin"
+echo "add InfluxDB data sources with url=http://influxdb-srv:8086 and Database=mydb"

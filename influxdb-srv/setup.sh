@@ -4,7 +4,7 @@ CONTAINER="influxdb-srv"
 IMAGE="influxdb:1.7.10"
 NETWORK="influxdb-net"
 DATA_VOLUME="influxdb-data-vol"
-PUB_PORT="-p 8086:8086"
+#PUB_PORT="-p 8086:8086"
 
 
 docker network create ${NETWORK}
