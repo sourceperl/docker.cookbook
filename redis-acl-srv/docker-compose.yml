@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  redis-acl-srv:
+    build: .
+    image: redis-acl-srv-img
+    container_name: redis-acl-srv
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - redis-acl-data-vol:/data
+    networks:
+      - redis-net
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+volumes:
+  redis-acl-data-vol:
+    external: true
+
+networks:
+  redis-net:
+    external: true
+
