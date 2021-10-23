@@ -1,0 +1,2 @@
+user default off -@all
+user u1 on >pwd ~* &* +@all

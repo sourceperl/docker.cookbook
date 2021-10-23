@@ -3,3 +3,4 @@ user u1 on >pwd ~* &* +@all
 user u2 on >pwd ~share:* +get +set +keys|share:*
 user u3 on >pwd &pub:* +publish
 user u4 on #a1159e9df3670d549d04524532629f5477ceb7deec9b45e47e8c009506ecb2c8 ~share:* +get
+user replica-user on >pwd +psync +replconf +ping
