@@ -31,4 +31,11 @@ docker run -d -p 0.0.0.0:9000:9000 --name=portainer --restart=always \
            -v portainer-data-vol:/data portainer/portainer-ce
 ```
 
+Add docker-compose (here for v2.4.0):
+
+```bash
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.4.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
 Now you can connect to portainer tool at http://localhost:9000/
