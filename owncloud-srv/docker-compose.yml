@@ -19,7 +19,7 @@ services:
       - mariadb
       - redis
     environment:
-      - OWNCLOUD_DOMAIN=localhost:443
+      - OWNCLOUD_SUB_URL=/owncloud
       - OWNCLOUD_DB_TYPE=mysql
       - OWNCLOUD_DB_NAME=owncloud
       - OWNCLOUD_DB_USERNAME=owncloud
