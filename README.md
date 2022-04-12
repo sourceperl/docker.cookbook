@@ -4,7 +4,7 @@ Some useful docker images and howto
 
 ## Docker setup for Raspberry Pi
 
-Ensure Raspbian is up to date:
+Ensure we are up to date:
 
 ```bash
 sudo apt-get update && sudo apt-get upgrade -y
@@ -20,6 +20,21 @@ For use docker cli with pi user, we need to add it to docker group. Then reboot 
 
 ```bash
 sudo usermod -aG docker pi
+sudo reboot
+```
+
+Some fix for Raspberry as docker host:
+
+```bash
+# enable cgroup: add "cgroup_enable=memory cgroup_memory=1" to kernel args
+sudo sed -i '/cgroup_enable=memory/!s/$/ cgroup_enable=memory/' /boot/cmdline.txt
+sudo sed -i '/cgroup_memory=1/!s/$/ cgroup_memory=1/' /boot/cmdline.txt
+# exclude docker virtual interfaces from dhcpcd
+# this avoid dhcpcd service crashes (see https://github.com/raspberrypi/linux/issues/4092/)
+sudo sh -c 'echo "" >> /etc/dhcpcd.conf'
+sudo sh -c 'echo "# exclude docker virtual interfaces" >> /etc/dhcpcd.conf'
+sudo sh -c 'echo "denyinterfaces veth*" >> /etc/dhcpcd.conf'
+
 sudo reboot
 ```
 
